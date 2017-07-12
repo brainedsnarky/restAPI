@@ -1,0 +1,73 @@
+.outer-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card{
+  background-color: #ffffff;
+  border: 1px solid #A7A8AA;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  color: #333333;
+  width: 300px;
+  height: 320px;
+  font-size: 11px;
+  border-radius: 4px;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.img-wrapper{
+  overflow: hidden;
+  height: 100px;
+  width: 150px;
+}
+
+.content-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.cause-wrapper{
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+.tags-wrapper{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+}
+
+.cause-wrapper ul li {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-weight: 600;
+  letter-spacing: 0px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin-top: 2px;
+  border: 1px solid #A7A8AA;
+}
+
+.btn-xs {
+  font-size: 12px;
+}
