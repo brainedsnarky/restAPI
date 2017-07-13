@@ -23,7 +23,15 @@
         </div>
       </div>
     </div>
-    <button (click)="showMore()" ></button>
+    <div class="btn-wrap">
+      <label>Options</label>
+      <ul>
+        <li *ngFor="let i of array_of_keys">
+          <input type="checkbox"   ng-model="i" value="{{i}}" />{{i}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
   </div>
   <button id="container"  class="btn btn-primary" (click)="downloadData()" >Download</button>
-</div>

@@ -71,3 +71,10 @@
 .btn-xs {
   font-size: 12px;
 }
+
+.btn-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+}
