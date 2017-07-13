@@ -16,8 +16,27 @@ export class CreatedAtComponent  {
   }
 
   private  downloadData() {
-    console.log('Working....');
-  }
+      console.log('working');
+      const arr = JSON.parse(JSON.stringify(this.created_at_array.response.docs));
+      console.log(arr);
+      Object.keys(arr).forEach(function(key){
+        console.log(key + ': ' + arr[key]);
+      });
+
+      const dataURL = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(arr));
+      // const dlAnchorElem = document.getElementById('downloadAnchorElem');
+      // dlAnchorElem.setAttribute('href',     dataURL     );
+      // dlAnchorElem.setAttribute('download', 'data.json');
+      // dlAnchorElem.click();
+      const a = document.createElement('a');
+      a.href = 'data:' + dataURL;
+      a.download = 'data(DateModified).json';
+      a.innerHTML = 'download JSON';
+
+      const container = document.getElementById('container');
+      container.appendChild(a);
+
+    }
 
 
   }
