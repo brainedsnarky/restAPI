@@ -59,26 +59,23 @@ export class HomeComponent implements OnInit {
     });
 
     console.log(results);
+    const arr = JSON.parse(JSON.stringify(results));
+    Object.keys(arr).forEach(function(key){
+      console.log(key + ': ' + arr[key]);
+    });
 
-    // console.log('working');
-    // const arr = JSON.parse(JSON.stringify(this.data.response.docs));
-    // console.log(arr);
-    // Object.keys(arr).forEach(function(key){
-    //   console.log(key + ': ' + arr[key]);
-    // });
-    //
-    // const dataURL = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(arr));
-    // // const dlAnchorElem = document.getElementById('downloadAnchorElem');
-    // // dlAnchorElem.setAttribute('href',     dataURL     );
-    // // dlAnchorElem.setAttribute('download', 'data.json');
-    // // dlAnchorElem.click();
-    // const a = document.createElement('a');
-    // a.href = 'data:' + dataURL;
-    // a.download = 'datas.json';
-    // a.innerHTML = 'download JSON';
-    //
-    // const container = document.getElementById('container');
-    // container.appendChild(a);
+    const dataURL = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(arr));
+    // const dlAnchorElem = document.getElementById('downloadAnchorElem');
+    // dlAnchorElem.setAttribute('href',     dataURL     );
+    // dlAnchorElem.setAttribute('download', 'data.json');
+    // dlAnchorElem.click();
+    const a = document.createElement('a');
+    a.href = 'data:' + dataURL;
+    a.download = 'datas.json';
+    a.innerHTML = 'download JSON';
+
+    const container = document.getElementById('container');
+    container.appendChild(a);
 
   }
 
