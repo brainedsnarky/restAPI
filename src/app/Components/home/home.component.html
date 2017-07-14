@@ -23,15 +23,21 @@
         </div>
       </div>
     </div>
-    <div class="btn-wrap">
+    <div *ngIf="hide" >
+    <button class="btn btn-primary" (click)="expand()" >Expand</button>
+    </div>
+    <div *ngIf="showDownloadOptions" >
+    <div >
       <label>Options</label>
-      <ul>
-        <li *ngFor="let i of array_of_keys">
-          <input type="checkbox"   ng-model="i" value="{{i}}" />{{i}}
+      <ul style="list-style-type: none" class="btn-wrap list">
+        <li *ngFor="let i of array_of_keys" class="list-item">
+          <input type="checkbox" style="padding: 5px"  ng-model="i" value="{{i}}" />{{i}}
         </li>
       </ul>
     </div>
+    <button id="container"  class="btn btn-primary" (click)="downloadData()" >Download</button>
+  </div>
 
   </div>
   </div>
-  <button id="container"  class="btn btn-primary" (click)="downloadData()" >Download</button>
+

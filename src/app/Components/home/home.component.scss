@@ -72,9 +72,35 @@
   font-size: 12px;
 }
 
-.btn-wrap{
+//.btn-wrap{
+//  display: flex;
+//  flex-wrap: wrap;
+//  flex-flow: row;
+//  justify-content: center;
+//  //flex-direction: column;
+//  align-content: center;
+//}
+
+.list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+  //box-shadow: 10px 10px 0 0 rgba(0,0,0,0.2);
+  list-style: none;
+  overflow: hidden;
+
+  .list-item {
+    margin: 5px;
+    padding: 0;
+    border-bottom: 1px solid #ecf0f1;
+    position: relative;
+
+    &:last-child {
+      border: 0;
+    }
+  }
 }

@@ -12,17 +12,16 @@ export class HomeComponent implements OnInit {
   data: any = {};
   array_of_keys: any = [];
 
-  date = false;
-  supporters = false;
-  amount = false;
-  cause = false;
+  showDownloadOptions = false;
+  hide = true;
 
   constructor(private service: ServerService) {
     this.service.getData()
       .subscribe(res => this.data = res);
   }
-
-  private downloadData() {
+  private expand() {
+    this.showDownloadOptions = true;
+    this.hide = false;
 
     this.data.response.docs.forEach((d) => {
       Object.keys(d).forEach((key) => {
@@ -32,7 +31,9 @@ export class HomeComponent implements OnInit {
       });
     });
     console.log(this.array_of_keys);
+  }
 
+  private downloadData() {
 
     // console.log('working');
     // const arr = JSON.parse(JSON.stringify(this.data.response.docs));
