@@ -48,16 +48,17 @@ export class HomeComponent implements OnInit {
 
   private downloadData() {
 
-    // let results = this.data.response.docs.map((d) => {
-    //   const obj = {};
-    //   array_of_required_keys.forEach((key) => {
-    //     if(d[key])
-    //       obj[key] = d[key];
-    //   });
-    //   return obj;
-    // });
-    //
-    // console.log(results);
+    let results = this.data.response.docs.map((d) => {
+      const obj = {};
+      this.array_of_required_keys.forEach((key) => {
+        if (d[key]) {
+          obj[key] = d[key];
+        }
+      });
+      return obj;
+    });
+
+    console.log(results);
 
     // console.log('working');
     // const arr = JSON.parse(JSON.stringify(this.data.response.docs));
