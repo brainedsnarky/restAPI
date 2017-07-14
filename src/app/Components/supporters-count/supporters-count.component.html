@@ -23,5 +23,18 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="downloadData()" id="container">Download</button>
+    <div *ngIf="hide" >
+      <button class="btn btn-primary" (click)="expand()" >Expand</button>
+    </div>
+    <div *ngIf="showDownloadOptions" >
+      <div>
+        <label>Options</label>
+        <ul style="list-style-type: none" class="btn-wrap list">
+          <li *ngFor="let i of array_of_keys" class="list-item">
+            <input type="checkbox" (change)="updateChecked2(i,$event)" value="i" />{{i}}
+          </li>
+        </ul>
+      </div>
+      <button id="container"  class="btn btn-primary" (click)="downloadData()" >Download</button>
+    </div>
 </div>
