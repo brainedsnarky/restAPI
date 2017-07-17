@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ServerService} from '../../Services/server.service';
+import {Subject} from 'rxjs/Subject';
+import {SearchService} from '../../Services/search.service';
 
 
 @Component({
@@ -16,9 +18,18 @@ export class HomeComponent implements OnInit {
   showDownloadOptions = false;
   hide = true;
 
-  constructor(private service: ServerService) {
+  results: any = {} ;
+  searchTerm$ = new Subject<string>();
+
+  constructor(private service: ServerService, private  searchService: SearchService) {
     this.service.getData()
       .subscribe(res => this.data = res);
+
+    this.searchService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.results = results.results;
+      });
+
   }
   private expand() {
     this.showDownloadOptions = true;

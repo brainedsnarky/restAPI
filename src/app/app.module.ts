@@ -5,10 +5,15 @@ import { FormsModule } from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
+
+// Services
 import { ServerService } from './Services/server.service';
 import { SupportersCountService } from './Services/supporters-count.service';
 import { DateModifiedService } from './Services/date-modified.service';
 import { AmntRaisedService } from './Services/amnt-raised.service';
+import {SearchService} from './Services/search.service';
+
+// Components
 import { HomeComponent } from './Components/home/home.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { SupportersCountComponent } from './Components/supporters-count/supporters-count.component';
@@ -39,7 +44,7 @@ const routes: Routes = [
     HttpModule,
     [RouterModule.forRoot(routes)]
   ],
-  providers: [ServerService, SupportersCountService, DateModifiedService, AmntRaisedService ],
+  providers: [SearchService, ServerService, SupportersCountService, DateModifiedService, AmntRaisedService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

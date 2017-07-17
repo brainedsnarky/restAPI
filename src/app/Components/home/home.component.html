@@ -1,5 +1,63 @@
 
 <div class="col-md-2-offset" style="margin-top: 10px">
+  <div style="width: 100%;" class="button-wrapper" >
+    <!--<form class="navbar-form navbar-right">-->
+    <!--<div class="form-group">-->
+    <!--<input type="text" class="form-control" placeholder="Search" >-->
+    <!--</div>-->
+    <!--</form>-->
+    <div class="top-search" data-reactid="21">
+      <span class="input" data-reactid="22">
+        <i class="fa fa-search" aria-hidden="true" data-reactid="23"></i>
+        <input type="text" name="Search for NGOs, Projects, Campaigns…" autocomplete="off" placeholder="Search for NGOs, Projects, Campaigns…" value="" (keyup)="searchTerm$.next($event.target.value)" >
+        <i class="" aria-hidden="true" ></i>
+      </span>
+    </div>
+  </div>
+  <!-- This will render when user searches for something!! -->
+  <div class="outer-container" *ngIf="results">
+    <div *ngFor="let result of results">
+      {{result.name}}
+    </div>
+    <!--<div class="card" *ngFor="let result of results | slice:0:9">-->
+      <!--<div class="img-wrapper">-->
+        <!--<img alt="image" class="img-circle m-t-xs img-responsive" src="{{result.creator_image}}">-->
+        <!--<div class="m-t-xs font-bold" style="white-space: pre-wrap" >{{result.name}}</div>-->
+      <!--</div>-->
+      <!--<div class="content-wrapper">-->
+        <!--<p class="text-muted"><i class="fa fa-clock-o"></i> {{result.created_at | date: 'MMMM d, yyyy'}}</p>-->
+        <!--<p class="text-muted"><i class="fa fa-heart"></i> {{result.supporter_count}}</p>-->
+        <!--<p class="text-muted">₹ {{result.raised_amount_in_inr}}</p>-->
+        <!--<p class=" text-muted fa fa-map-marker" aria-hidden="true" > {{result.location}}</p>-->
+        <!--<div class="cause-wrapper">-->
+          <!--<ul  style="list-style-type: none; width: 100%;" class="btn btn-xs" *ngFor="let cause of result.causes">-->
+            <!--<li style="white-space:pre-wrap">{{cause}}</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="tags-wrapper">-->
+          <!--<ul  style="list-style-type: none" class="btn btn-xs"  *ngFor="let tag of result.tags">-->
+            <!--<li style="white-space:pre-wrap">{{tag}}</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div *ngIf="hide" >
+      <button class="btn btn-primary" (click)="expand()" >Expand</button>
+    </div>
+    <div *ngIf="showDownloadOptions" >
+      <div>
+        <label>Options</label>
+        <ul style="list-style-type: none" class="btn-wrap list">
+          <li *ngFor="let i of array_of_keys" class="list-item">
+            <input type="checkbox" (change)="updateChecked2(i,$event)" value="i" />{{i}}
+          </li>
+        </ul>
+      </div>
+      <button   class="btn btn-success" (click)="downloadData()" >Download</button>
+    </div>
+  </div>
+
+  <!-- This will render by default -->
   <div class="outer-container">
     <div class="card" *ngFor='let d of data.response.docs'>
       <div class="img-wrapper">
