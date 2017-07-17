@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   hide = true;
 
   results: any = {} ;
+  result = false;
   searchTerm$ = new Subject<string>();
 
   constructor(private service: ServerService, private  searchService: SearchService) {

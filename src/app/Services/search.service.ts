@@ -24,7 +24,7 @@ export class SearchService {
   searchEntries(term) {
     return this.http
       .get(this.baseUrl + this.queryUrl + term + this.restofBaseUrl)
-      .map(res => res.json());
+      .map(response => response.json());
   }
 
 }
