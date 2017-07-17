@@ -52,11 +52,11 @@ export class HomeComponent implements OnInit {
     let row = "";
 
     for ( let index in objArray[0]) {
-      //Now convert each value to string and comma-separated
+
       row += index + ',';
     }
     row = row.slice(0, -1);
-    //append Label row with line break
+
     str += row + '\r\n';
 
     for (let i = 0; i < array.length; i++) {
@@ -89,28 +89,15 @@ export class HomeComponent implements OnInit {
       console.log(key + ': ' + arr[key]);
     });
 
-    var csvData = this.ConvertToCSV(results);
-    var a = document.createElement('a');
+    const csvData = this.ConvertToCSV(results);
+    const a = document.createElement('a');
     a.setAttribute('style', 'display:none;');
     document.body.appendChild(a);
-    var blob = new Blob([csvData], { type: 'text/csv' });
-    var url= window.URL.createObjectURL(blob);
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
     a.href = url;
     a.download = 'SampleExport.csv';
     a.click();
-
-    // const dataURL = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(arr));
-    // // const dlAnchorElem = document.getElementById('downloadAnchorElem');
-    // // dlAnchorElem.setAttribute('href',     dataURL     );
-    // // dlAnchorElem.setAttribute('download', 'data.json');
-    // // dlAnchorElem.click();
-    // const a = document.createElement('a');
-    // a.href = 'data:' + dataURL;
-    // a.download = 'datas.json';
-    // a.innerHTML = 'download JSON';
-    //
-    // const container = document.getElementById('container');
-    // container.appendChild(a);
 
   }
 

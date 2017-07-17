@@ -47,6 +47,31 @@ export class SupportersCountComponent {
     console.log(this.array_of_required_keys);
   }
 
+  ConvertToCSV(objArray) {
+    let array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+    let str = '';
+    let row = "";
+
+    for ( let index in objArray[0]) {
+
+      row += index + ',';
+    }
+    row = row.slice(0, -1);
+
+    str += row + '\r\n';
+
+    for (let i = 0; i < array.length; i++) {
+      var line = '';
+      for (let  index in array[i]) {
+        if (line !== '') line += ','
+
+        line += array[i][index];
+      }
+      str += line + '\r\n';
+    }
+    return str;
+  }
+
   private  downloadData() {
 
     let results = this.supporters_sort.response.docs.map((d) => {
@@ -66,18 +91,15 @@ export class SupportersCountComponent {
         console.log(key + ': ' + arr[key]);
       });
 
-      const dataURL = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(arr));
-      // const dlAnchorElem = document.getElementById('downloadAnchorElem');
-      // dlAnchorElem.setAttribute('href',     dataURL     );
-      // dlAnchorElem.setAttribute('download', 'data.json');
-      // dlAnchorElem.click();
-      const a = document.createElement('a');
-      a.href = 'data:' + dataURL;
-      a.download = 'data(supporters count).json';
-      a.innerHTML = 'download JSON';
-
-      const container = document.getElementById('container');
-      container.appendChild(a);
+    const csvData = this.ConvertToCSV(results);
+    const a = document.createElement('a');
+    a.setAttribute('style', 'display:none;');
+    document.body.appendChild(a);
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = 'SampleExport.csv';
+    a.click();
 
   }
 
