@@ -12,6 +12,7 @@ import { SupportersCountService } from './Services/supporters-count.service';
 import { DateModifiedService } from './Services/date-modified.service';
 import { AmntRaisedService } from './Services/amnt-raised.service';
 import {SearchService} from './Services/search.service';
+import { CampaignSearchService } from './Services/campaign-search.service';
 
 // Components
 import { HomeComponent } from './Components/home/home.component';
@@ -44,7 +45,9 @@ const routes: Routes = [
     HttpModule,
     [RouterModule.forRoot(routes)]
   ],
-  providers: [SearchService, ServerService, SupportersCountService, DateModifiedService, AmntRaisedService ],
+  providers: [SearchService, ServerService,
+    SupportersCountService, DateModifiedService,
+    AmntRaisedService, CampaignSearchService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
