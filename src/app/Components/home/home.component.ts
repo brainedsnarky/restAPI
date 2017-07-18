@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ServerService} from '../../Services/server.service';
+
 import {Subject} from 'rxjs/Subject';
+
+import {ServerService} from '../../Services/server.service';
 import {SearchService} from '../../Services/search.service';
 import {CampaignSearchService} from '../../Services/campaign-search.service';
+import {ProjectSearchService} from '../../Services/project-search.service';
 
 
 @Component({
@@ -22,7 +25,9 @@ export class HomeComponent implements OnInit {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private service: ServerService, private searchService: SearchService, private campaignService: CampaignSearchService) {
+  constructor(private service: ServerService, private searchService: SearchService,
+              private campaignService: CampaignSearchService, private projectService: ProjectSearchService) {
+
     this.service.getData()
       .subscribe(res => this.data = res);
 
@@ -32,6 +37,11 @@ export class HomeComponent implements OnInit {
       });
 
     this.campaignService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.data = results;
+      });
+
+    this.projectService.search(this.searchTerm$)
       .subscribe(results => {
         this.data = results;
       });
