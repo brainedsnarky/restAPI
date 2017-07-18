@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {DateModifiedService} from '../../Services/date-modified.service';
+import {SearchService} from "../../Services/search.service";
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-created-at',
@@ -15,9 +17,17 @@ export class CreatedAtComponent  {
   showDownloadOptions = false;
   hide = true;
 
-  constructor(private date_service: DateModifiedService) {
+  results: any = {} ;
+  searchTerm$ = new Subject<string>();
+
+  constructor(private date_service: DateModifiedService, private  searchService: SearchService) {
     this.date_service.getcreatedAt()
       .subscribe(res => this.created_at_array = res);
+
+    this.searchService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.created_at_array = results;
+      });
   }
 
   private expand() {
