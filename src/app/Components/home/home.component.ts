@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
   searchTerm$ = new Subject<string>();
 
   constructor(private service: ServerService, private  searchService: SearchService) {
-    // this.service.getData()
-    //   .subscribe(res => this.data = res);
+    this.service.getData()
+      .subscribe(res => this.data = res);
 
     this.searchService.search(this.searchTerm$)
       .subscribe(results => {
