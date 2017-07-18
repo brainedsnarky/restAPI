@@ -9,7 +9,8 @@
     <div class="top-search" data-reactid="21">
       <span class="input" data-reactid="22">
         <i class="fa fa-search" aria-hidden="true" data-reactid="23"></i>
-        <input type="text" name="Search for NGOs, Projects, Campaigns…" autocomplete="off" placeholder="Search for NGOs, Projects, Campaigns…" value="" (keyup)="searchTerm$.next($event.target.value)" >
+        <input type="text" name="Search for NGOs, Projects, Campaigns…" autocomplete="off" placeholder="Search for NGOs, Projects, Campaigns…"
+               value="" (keyup)="searchTerm$.next($event.target.value)"  [(ngModel)]="termm" >
         <i class="" aria-hidden="true" ></i>
       </span>
     </div>

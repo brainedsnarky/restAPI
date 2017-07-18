@@ -22,8 +22,12 @@ export class SearchService {
   }
 
   searchEntries(term) {
+    if ( term.length > 0 ) {
+      return this.http.get(this.baseUrl + this.queryUrl + term + this.restofBaseUrl)
+        .map(response => response.json());
+    }
     return this.http
-      .get(this.baseUrl + this.queryUrl + term + this.restofBaseUrl)
+      .get('https://staging.letzchange.org/search?fq=(type:nonprofit)&rows=20')
       .map(response => response.json());
   }
 

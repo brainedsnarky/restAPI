@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private service: ServerService, private  searchService: SearchService, private campaignService: CampaignSearchService ) {
+  constructor(private service: ServerService, private searchService: SearchService ) {
     this.service.getData()
       .subscribe(res => this.data = res);
 
@@ -31,10 +31,10 @@ export class HomeComponent implements OnInit {
         this.data = results;
       });
 
-    this.campaignService.search(this.searchTerm$)
-      .subscribe(results => {
-        this.data = results;
-      });
+    // this.campaignService.search(this.searchTerm$)
+    //   .subscribe(results => {
+    //     this.data = results;
+    //   });
 
   }
   private expand() {
@@ -77,8 +77,8 @@ export class HomeComponent implements OnInit {
     str += row + '\r\n';
 
     for (let i = 0; i < array.length; i++) {
-      var line = '';
-      for (let  index in array[i]) {
+      let line = '';
+      for (let index in array[i]) {
         if (line !== '') line += ','
 
         line += array[i][index];
