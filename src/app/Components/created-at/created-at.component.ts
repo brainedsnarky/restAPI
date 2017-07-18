@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {DateModifiedService} from '../../Services/date-modified.service';
 import {SearchService} from "../../Services/search.service";
 import {Subject} from "rxjs/Subject";
+import {CampaignSearchService} from "../../Services/campaign-search.service";
 
 @Component({
   selector: 'app-created-at',
@@ -20,11 +21,18 @@ export class CreatedAtComponent  {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private date_service: DateModifiedService, private  searchService: SearchService) {
+  constructor(private date_service: DateModifiedService, private  searchService: SearchService,
+              private campaignService: CampaignSearchService) {
+
     this.date_service.getcreatedAt()
       .subscribe(res => this.created_at_array = res);
 
     this.searchService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.created_at_array = results;
+      });
+
+    this.campaignService.search(this.searchTerm$)
       .subscribe(results => {
         this.created_at_array = results;
       });

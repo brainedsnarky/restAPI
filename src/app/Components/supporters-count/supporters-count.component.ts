@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {SupportersCountService} from '../../Services/supporters-count.service';
 import {Subject} from "rxjs/Subject";
 import {SearchService} from "../../Services/search.service";
+import {CampaignSearchService} from "../../Services/campaign-search.service";
 
 @Component({
   selector: 'app-supporters-count',
@@ -21,11 +22,18 @@ export class SupportersCountComponent {
   searchTerm$ = new Subject<string>();
 
 
-  constructor( private supporters_Service: SupportersCountService, private  searchService: SearchService ) {
+  constructor( private supporters_Service: SupportersCountService, private  searchService: SearchService,
+               private campaignService: CampaignSearchService) {
+
     this.supporters_Service.getSupportersCount()
       .subscribe(res => this.supporters_sort = res);
 
     this.searchService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.supporters_sort = results;
+      });
+
+    this.campaignService.search(this.searchTerm$)
       .subscribe(results => {
         this.supporters_sort = results;
       });
