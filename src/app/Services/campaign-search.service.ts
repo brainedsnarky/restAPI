@@ -27,7 +27,7 @@ export class CampaignSearchService {
         .map(response => response.json());
     }
     return this.http
-      .get('https://staging.letzchange.org/search?fq=(type:nonprofit)&rows=20')
+      .get('https://staging.letzchange.org/search?fq=(type:campaign)&rows=20')
       .map(response => response.json());
   }
 
