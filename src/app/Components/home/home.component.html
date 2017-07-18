@@ -40,10 +40,13 @@
         </div>
       </div>
     </div>
-    <div *ngIf="hide" >
+
+
+  </div>
+  <div *ngIf="hide" >
     <button class="btn btn-primary" (click)="expand()" >Expand</button>
-    </div>
-    <div *ngIf="showDownloadOptions" >
+  </div>
+  <div *ngIf="showDownloadOptions" >
     <div>
       <label>Options</label>
       <ul style="list-style-type: none" class="btn-wrap list">
@@ -53,8 +56,6 @@
       </ul>
     </div>
     <button id="container"  class="btn btn-success" (click)="downloadData()" >Download</button>
-  </div>
-
   </div>
   </div>
 
