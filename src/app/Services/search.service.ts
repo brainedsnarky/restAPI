@@ -11,7 +11,7 @@ export class SearchService {
 
   baseUrl: string = 'https://staging.letzchange.org/';
   queryUrl: string = 'search?q=';
-  restofBaseUrl: string = '~&fq=(type:nonprofit)&rows=20';
+  restofBaseUrl: string = '~&fq=(type:nonprofit)&rows=10';
 
   constructor(private http: Http) { }
 
