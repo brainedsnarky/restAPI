@@ -19,16 +19,15 @@ export class HomeComponent implements OnInit {
   hide = true;
 
   results: any = {} ;
-  result = false;
   searchTerm$ = new Subject<string>();
 
   constructor(private service: ServerService, private  searchService: SearchService) {
-    this.service.getData()
-      .subscribe(res => this.data = res);
+    // this.service.getData()
+    //   .subscribe(res => this.data = res);
 
     this.searchService.search(this.searchTerm$)
       .subscribe(results => {
-        this.results = results.results;
+        this.data = results;
       });
 
   }
