@@ -6,11 +6,11 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 @Injectable()
-export class CampaignSearchService {
+export class ProjectSearchService {
 
   baseUrl: string = 'https://staging.letzchange.org/';
   queryUrl: string = 'search?q=';
-  restOfBaseUrl: string = '~&fq=(type:campaign)&rows=10';
+  restOfBaseUrl: string = '~&fq=(type:project)&rows=10';
 
   constructor(private http: Http) { }
 
@@ -27,7 +27,7 @@ export class CampaignSearchService {
         .map(response => response.json());
     }
     return this.http
-      .get('https://staging.letzchange.org/search?fq=(type:nonprofit)&rows=20')
+      .get('https://staging.letzchange.org/search?fq=(type:project)&rows=20')
       .map(response => response.json());
   }
 
