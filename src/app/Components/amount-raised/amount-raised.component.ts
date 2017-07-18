@@ -2,7 +2,8 @@ import { Component} from '@angular/core';
 import {AmntRaisedService} from '../../Services/amnt-raised.service';
 import {SearchService} from '../../Services/search.service';
 import {Subject} from 'rxjs/Subject';
-import {CampaignSearchService} from "../../Services/campaign-search.service";
+import {CampaignSearchService} from '../../Services/campaign-search.service';
+import {ProjectSearchService} from '../../Services/project-search.service';
 
 @Component({
   selector: 'app-amount-raised',
@@ -22,7 +23,8 @@ export class AmountRaisedComponent {
   searchTerm$ = new Subject<string>();
 
   constructor(private amnt_service: AmntRaisedService, private  searchService: SearchService,
-              private campaignService: CampaignSearchService) {
+              private campaignService: CampaignSearchService, private  projectService: ProjectSearchService) {
+
     this.amnt_service.getAmntRaised()
       .subscribe(res => this.amnt_raised_array = res);
 
@@ -32,6 +34,11 @@ export class AmountRaisedComponent {
       });
 
     this.campaignService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.amnt_raised_array = results;
+      });
+
+    this.projectService.search(this.searchTerm$)
       .subscribe(results => {
         this.amnt_raised_array = results;
       });

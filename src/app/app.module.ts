@@ -13,6 +13,7 @@ import { DateModifiedService } from './Services/date-modified.service';
 import { AmntRaisedService } from './Services/amnt-raised.service';
 import {SearchService} from './Services/search.service';
 import { CampaignSearchService } from './Services/campaign-search.service';
+import {ProjectSearchService} from './Services/project-search.service';
 
 // Components
 import { HomeComponent } from './Components/home/home.component';
@@ -47,7 +48,7 @@ const routes: Routes = [
   ],
   providers: [SearchService, ServerService,
     SupportersCountService, DateModifiedService,
-    AmntRaisedService, CampaignSearchService ],
+    AmntRaisedService, CampaignSearchService, ProjectSearchService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
