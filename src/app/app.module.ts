@@ -11,7 +11,7 @@ import { ServerService } from './Services/server.service';
 import { SupportersCountService } from './Services/supporters-count.service';
 import { DateModifiedService } from './Services/date-modified.service';
 import { AmntRaisedService } from './Services/amnt-raised.service';
-import {SearchService} from './Services/search.service';
+import { SearchService } from './Services/search.service';
 import { CampaignSearchService } from './Services/campaign-search.service';
 import {ProjectSearchService} from './Services/project-search.service';
 
