@@ -7,6 +7,8 @@ import {ProjectSearchService} from '../../Services/project-search.service';
 import {ServerService} from "../../Services/server.service";
 import {ProjectService} from "../../Services/project.service";
 import {Http} from "@angular/http";
+import {CreatorNameSearchService} from "../../Services/creator-name-search.service";
+import {ParentNameCampaignSearchService} from "../../Services/parent-name-campaign-search.service";
 
 @Component({
   selector: 'app-amount-raised',
@@ -26,7 +28,8 @@ export class AmountRaisedComponent {
   searchTerm$ = new Subject<string>();
 
   constructor(private _http: Http, private amnt_service: AmntRaisedService, private  searchService: SearchService,
-              private campaignService: CampaignSearchService, private  projectService: ProjectSearchService) {
+              private campaignService: CampaignSearchService, private  projectService: ProjectSearchService,
+              private creator_name: CreatorNameSearchService, private parent_namesearch: ParentNameCampaignSearchService) {
 
     this.amnt_service.getAmntRaised()
       .subscribe(res => this.amnt_raised_array = res);
@@ -42,6 +45,16 @@ export class AmountRaisedComponent {
       });
 
     this.projectService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.amnt_raised_array = results;
+      });
+
+    this.creator_name.search(this.searchTerm$)
+      .subscribe(results => {
+        this.amnt_raised_array = results;
+      });
+
+    this.parent_namesearch.search(this.searchTerm$)
       .subscribe(results => {
         this.amnt_raised_array = results;
       });

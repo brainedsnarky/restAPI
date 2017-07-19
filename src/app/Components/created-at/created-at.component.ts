@@ -5,6 +5,8 @@ import {Subject} from 'rxjs/Subject';
 import {CampaignSearchService} from '../../Services/campaign-search.service';
 import {ProjectSearchService} from '../../Services/project-search.service';
 import {Http} from "@angular/http";
+import {CreatorNameSearchService} from "../../Services/creator-name-search.service";
+import {ParentNameCampaignSearchService} from "../../Services/parent-name-campaign-search.service";
 
 @Component({
   selector: 'app-created-at',
@@ -24,7 +26,8 @@ export class CreatedAtComponent  {
   searchTerm$ = new Subject<string>();
 
   constructor(private _http: Http, private date_service: DateModifiedService, private  searchService: SearchService ,
-              private campaignService: CampaignSearchService, private  projectService: ProjectSearchService) {
+              private campaignService: CampaignSearchService, private  projectService: ProjectSearchService,
+              private creator_name: CreatorNameSearchService, private parent_namesearch: ParentNameCampaignSearchService) {
 
     this.date_service.getcreatedAt()
       .subscribe(res => this.created_at_array = res);
@@ -40,6 +43,16 @@ export class CreatedAtComponent  {
       });
 
     this.projectService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.created_at_array = results;
+      });
+
+    this.creator_name.search(this.searchTerm$)
+      .subscribe(results => {
+        this.created_at_array = results;
+      });
+
+    this.parent_namesearch.search(this.searchTerm$)
       .subscribe(results => {
         this.created_at_array = results;
       });

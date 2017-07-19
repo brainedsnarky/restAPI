@@ -5,6 +5,8 @@ import {SearchService} from '../../Services/search.service';
 import {CampaignSearchService} from '../../Services/campaign-search.service';
 import {ProjectSearchService} from '../../Services/project-search.service';
 import {Http} from "@angular/http";
+import {CreatorNameSearchService} from "../../Services/creator-name-search.service";
+import {ParentNameCampaignSearchService} from "../../Services/parent-name-campaign-search.service";
 
 @Component({
   selector: 'app-supporters-count',
@@ -25,7 +27,8 @@ export class SupportersCountComponent {
 
 
   constructor( private _http: Http,  private supporters_Service: SupportersCountService, private  searchService: SearchService,
-               private campaignService: CampaignSearchService, private  projectService: ProjectSearchService) {
+               private campaignService: CampaignSearchService, private  projectService: ProjectSearchService,
+               private creator_name: CreatorNameSearchService, private parent_namesearch: ParentNameCampaignSearchService) {
 
     this.supporters_Service.getSupportersCount()
       .subscribe(res => this.supporters_sort = res);
@@ -41,6 +44,16 @@ export class SupportersCountComponent {
       });
 
     this.projectService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.supporters_sort = results;
+      });
+
+    this.creator_name.search(this.searchTerm$)
+      .subscribe(results => {
+        this.supporters_sort = results;
+      });
+
+    this.parent_namesearch.search(this.searchTerm$)
       .subscribe(results => {
         this.supporters_sort = results;
       });
