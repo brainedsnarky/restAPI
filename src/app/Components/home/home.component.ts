@@ -7,6 +7,7 @@ import {SearchService} from '../../Services/search.service';
 import {CampaignSearchService} from '../../Services/campaign-search.service';
 import {ProjectSearchService} from '../../Services/project-search.service';
 import {ProjectService} from '../../Services/project.service';
+import {CreatorNameSearchService} from '../../Services/creator-name-search.service';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
   searchTerm$ = new Subject<string>();
 
   constructor(private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
-              private campaignService: CampaignSearchService, private projectService: ProjectSearchService) {
+              private campaignService: CampaignSearchService, private projectService: ProjectSearchService ,
+              private creator_name: CreatorNameSearchService) {
 
     this.service.getData()
       .subscribe(res => this.data = res);
@@ -43,6 +45,11 @@ export class HomeComponent implements OnInit {
       });
 
     this.projectService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.data = results;
+      });
+
+    this.creator_name.search(this.searchTerm$)
       .subscribe(results => {
         this.data = results;
       });

@@ -15,6 +15,7 @@ import { AmntRaisedService } from './Services/amnt-raised.service';
 import { SearchService } from './Services/search.service';
 import { CampaignSearchService } from './Services/campaign-search.service';
 import {ProjectSearchService} from './Services/project-search.service';
+import {CreatorNameSearchService} from './Services/creator-name-search.service';
 
 // Components
 import { HomeComponent } from './Components/home/home.component';
@@ -22,8 +23,6 @@ import { HeaderComponent } from './Components/header/header.component';
 import { SupportersCountComponent } from './Components/supporters-count/supporters-count.component';
 import { CreatedAtComponent } from './Components/created-at/created-at.component';
 import { AmountRaisedComponent } from './Components/amount-raised/amount-raised.component';
-
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -49,7 +48,7 @@ const routes: Routes = [
     [RouterModule.forRoot(routes)]
   ],
   providers: [SearchService, ServerService, ProjectService,
-    SupportersCountService, DateModifiedService,
+    SupportersCountService, DateModifiedService, CreatorNameSearchService,
     AmntRaisedService, CampaignSearchService, ProjectSearchService ],
   bootstrap: [AppComponent]
 })
