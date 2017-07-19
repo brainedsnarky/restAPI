@@ -1,18 +1,19 @@
 
 <div class="col-md-2-offset" style="margin-top: 10px">
 
-  <div style="width: 100%;"  >
-    <ul class="tabs-menu">
-      <button class="search-tab tab-left btn border-white btn-xs" >Campaigns</button>
-      <button class="search-tab tab-right btn border-white btn-xs" >Live Projects</button>
-
-    </ul>
+  <div class="top-section" >
+    <div style="width: auto">
+      <ul class="tabs-menu">
+        <button class="search-tab tab-left btn border-white btn-xs" [routerLinkActive]="['active']" (click)="showCampaigns()" >Campaigns</button>
+        <button class="search-tab tab-right btn border-white btn-xs" [routerLinkActive]="['active']" (click)="showProjects()" >Live Projects</button>
+      </ul>
+    </div>
     <div class="end-search">
     <span class="input" >
     <i class="fa fa-search" aria-hidden="true" ></i>
     <input type="text" name="Search for NGOs, Projects, Campaigns…" autocomplete="off" placeholder="Search for NGOs, Projects, Campaigns…"
-           value="" (keyup)="searchTerm$.next($event.target.value)" >
-    <i class="" aria-hidden="true" ></i>
+           (keyup)="searchTerm$.next($event.target.value)" >
+    <i aria-hidden="true" ></i>
     </span>
     </div>
   </div>

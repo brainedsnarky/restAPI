@@ -4,6 +4,7 @@ import {SearchService} from '../../Services/search.service';
 import {Subject} from 'rxjs/Subject';
 import {CampaignSearchService} from '../../Services/campaign-search.service';
 import {ProjectSearchService} from '../../Services/project-search.service';
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-created-at',
@@ -22,7 +23,7 @@ export class CreatedAtComponent  {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private date_service: DateModifiedService, private  searchService: SearchService ,
+  constructor(private _http: Http, private date_service: DateModifiedService, private  searchService: SearchService ,
               private campaignService: CampaignSearchService, private  projectService: ProjectSearchService) {
 
     this.date_service.getcreatedAt()
@@ -93,6 +94,18 @@ export class CreatedAtComponent  {
       str += line + '\r\n';
     }
     return str;
+  }
+
+  showCampaigns() {
+    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=created_at%20desc&row=10')
+      .map(response => response.json())
+      .subscribe(res => this.created_at_array = res);
+  }
+
+  showProjects() {
+    return this._http.get('https://staging.letzchange.org/search?fq=(type:project)&sort=created_at%20desc&row=10')
+      .map(response => response.json())
+      .subscribe(res => this.created_at_array = res);
   }
 
   private  downloadData() {

@@ -4,6 +4,9 @@ import {SearchService} from '../../Services/search.service';
 import {Subject} from 'rxjs/Subject';
 import {CampaignSearchService} from '../../Services/campaign-search.service';
 import {ProjectSearchService} from '../../Services/project-search.service';
+import {ServerService} from "../../Services/server.service";
+import {ProjectService} from "../../Services/project.service";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-amount-raised',
@@ -22,7 +25,7 @@ export class AmountRaisedComponent {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private amnt_service: AmntRaisedService, private  searchService: SearchService,
+  constructor(private _http: Http, private amnt_service: AmntRaisedService, private  searchService: SearchService,
               private campaignService: CampaignSearchService, private  projectService: ProjectSearchService) {
 
     this.amnt_service.getAmntRaised()
@@ -44,7 +47,7 @@ export class AmountRaisedComponent {
       });
   }
 
-  private expand() {
+  expand() {
     this.showDownloadOptions = true;
     this.hide = false;
 
@@ -57,6 +60,18 @@ export class AmountRaisedComponent {
     });
     console.log(this.array_of_keys);
     console.log(Object.keys(this.array_of_keys));
+  }
+
+  showCampaigns() {
+    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=raised_amount_in_inr%20asc&row=10')
+      .map(response => response.json())
+      .subscribe(res => this.amnt_raised_array = res);
+  }
+
+  showProjects() {
+    return this._http.get('https://staging.letzchange.org/search?fq=(type:project)&sort=raised_amount_in_inr%20asc&row=10')
+      .map(response => response.json())
+      .subscribe(res => this.amnt_raised_array = res);
   }
 
   updateChecked2(value, event) {
@@ -95,7 +110,7 @@ export class AmountRaisedComponent {
     return str;
   }
 
-  private  downloadData() {
+  downloadData() {
     let results = this.amnt_raised_array.response.docs.map((d) => {
       const obj = {};
       this.array_of_required_keys.forEach((key) => {

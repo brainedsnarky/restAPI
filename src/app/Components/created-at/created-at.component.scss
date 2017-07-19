@@ -96,15 +96,23 @@
   }
 }
 
+.top-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .tabs-menu {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 10px;
 }
 
 .end-search{
-  float: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .search-tab{
