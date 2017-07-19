@@ -3,9 +3,9 @@
 <div class="col-md-10">
 <app-header></app-header>
   <div class="button-wrapper" >
-    <span class="btn border-white btn-lg" routerLink='/supporters_count' >Supporters Count</span>
-    <span class="btn border-white btn-lg"  routerLink='/amount_raised' >Amount Raised</span>
-    <span class="btn border-white btn-lg" routerLink='/created_at' >Date Modified</span>
+    <span class="btn border-white btn-lg" [routerLinkActive]="['active']"  routerLink='/supporters_count' >Supporters Count</span>
+    <span class="btn border-white btn-lg" [routerLinkActive]="['active']" routerLink='/amount_raised' >Amount Raised</span>
+    <span class="btn border-white btn-lg" [routerLinkActive]="['active']" routerLink='/created_at' >Date Modified</span>
   </div>
   <router-outlet></router-outlet>
   </div>
