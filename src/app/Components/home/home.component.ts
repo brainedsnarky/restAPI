@@ -77,8 +77,9 @@ export class HomeComponent implements OnInit {
     console.log(Object.keys(this.array_of_keys));
   }
 
-  ShowMore(){
+  ShowMore() {
 
+   console.log(' Working.. ');
 
   }
 
