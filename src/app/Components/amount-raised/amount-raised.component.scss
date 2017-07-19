@@ -71,3 +71,161 @@
 .btn-xs {
   font-size: 12px;
 }
+
+.list {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+  //box-shadow: 10px 10px 0 0 rgba(0,0,0,0.2);
+  list-style: none;
+  overflow: hidden;
+
+  .list-item {
+    margin: 5px;
+    padding: 0;
+    border-bottom: 1px solid #ecf0f1;
+    position: relative;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}
+
+.tabs-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.end-search{
+  float: right;
+}
+
+.search-tab{
+  line-height: 32px;
+  padding: 0 22px;
+  color: #9b9b9b;
+  background: #fefefe;
+  border: 0;
+  outline: 0;
+  font-size: 1em;
+}
+
+.search-tab.tab-left{
+  border: 1px solid #B6C6AC;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  margin: 0;
+}
+
+.search-tab.tab-right{
+  border: 1px solid #B6C6AC;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin: 0;
+}
+
+/*************************************************************/
+/************************** Buttons **************************/
+/*************************************************************/
+.btn {
+  font-weight: 600;
+  letter-spacing: 0px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin-top: 2px;
+  border: 1px solid #A7A8AA;
+}
+
+.btn-default:hover, .btn-default:focus {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+
+.btn-lg {
+  padding: 14px 28px 13px 28px;
+  font-size: 13px;
+}
+
+.btn-xs {
+  font-size: 12px;
+}
+
+.btn-theme-bg {
+  border-color: #32c5d2;
+  color: #fff;
+  background-color: #32c5d2;
+}
+
+.btn i {
+  margin-right: 10px;
+}
+
+.btn-theme-bg:hover {
+  background-color: #29335C;
+  border-color: #29335C;
+}
+
+.btn-theme-dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-theme-dark:hover {
+  color: #fff;
+  background-color: #32c5d2;
+}
+
+/*********border-buttons**********/
+.border-black {
+  border: 1px solid #333;
+  color: #000;
+  background-color: transparent;
+}
+
+.border-black:hover {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.border-white {
+  border: 1px solid #fff;
+  color: #29335C;
+}
+
+.border-white:hover {
+  background-color: #fff;
+  border-color: #29335C;
+  color: #000;
+}
+
+.border-theme {
+  border: 1px solid #32c5d2;
+  color: #32c5d2;
+}
+
+.border-theme:hover {
+  background-color: #32c5d2;
+  border-color: #32c5d2;
+  color: #fff;
+}
+
+.btn-3d {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+.btn-ico i {
+  margin-left: 5px;
+}
