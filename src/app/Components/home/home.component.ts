@@ -77,6 +77,11 @@ export class HomeComponent implements OnInit {
     console.log(Object.keys(this.array_of_keys));
   }
 
+  ShowMore(){
+
+
+  }
+
   updateChecked2(value, event) {
     if (event.target.checked) {
       this.array_of_required_keys.push(value);
