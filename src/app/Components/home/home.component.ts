@@ -14,7 +14,7 @@ import {ProjectSearchService} from '../../Services/project-search.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = 'LetzChange Foundations Bhumi Campaigns';
+  title = 'LetzChange Foundations Campaigns';
   data: any = {};
   array_of_keys: any = [];
   array_of_required_keys: any = [];
