@@ -6,6 +6,7 @@ import {ServerService} from '../../Services/server.service';
 import {SearchService} from '../../Services/search.service';
 import {CampaignSearchService} from '../../Services/campaign-search.service';
 import {ProjectSearchService} from '../../Services/project-search.service';
+import {ProjectService} from '../../Services/project.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private service: ServerService, private searchService: SearchService ,
+  constructor(private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
               private campaignService: CampaignSearchService, private projectService: ProjectSearchService) {
 
     this.service.getData()
@@ -47,7 +48,8 @@ export class HomeComponent implements OnInit {
       });
 
   }
-  private expand() {
+
+   expand() {
     this.showDownloadOptions = true;
     this.hide = false;
 
@@ -98,7 +100,17 @@ export class HomeComponent implements OnInit {
     return str;
   }
 
-  private downloadData() {
+  showCampaigns() {
+    this.service.getData()
+      .subscribe(res => this.data = res);
+  }
+
+  showProjects() {
+    this.getprojectService.getData()
+      .subscribe(res => this.data = res);
+  }
+
+  downloadData() {
 
     let results = this.data.response.docs.map((d) => {
       const obj = {};

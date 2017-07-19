@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 // Services
 import { ServerService } from './Services/server.service';
+import {ProjectService} from './Services/project.service';
 import { SupportersCountService } from './Services/supporters-count.service';
 import { DateModifiedService } from './Services/date-modified.service';
 import { AmntRaisedService } from './Services/amnt-raised.service';
@@ -21,6 +22,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { SupportersCountComponent } from './Components/supporters-count/supporters-count.component';
 import { CreatedAtComponent } from './Components/created-at/created-at.component';
 import { AmountRaisedComponent } from './Components/amount-raised/amount-raised.component';
+
 
 
 const routes: Routes = [
@@ -46,7 +48,7 @@ const routes: Routes = [
     HttpModule,
     [RouterModule.forRoot(routes)]
   ],
-  providers: [SearchService, ServerService,
+  providers: [SearchService, ServerService, ProjectService,
     SupportersCountService, DateModifiedService,
     AmntRaisedService, CampaignSearchService, ProjectSearchService ],
   bootstrap: [AppComponent]
