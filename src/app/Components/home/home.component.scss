@@ -105,14 +105,22 @@
   }
 }
 
+.top-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .tabs-menu {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
 
 .end-search{
  display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
 }
 
@@ -239,8 +247,4 @@
   margin-left: 5px;
 }
 
-.top-section{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between
-}
+
