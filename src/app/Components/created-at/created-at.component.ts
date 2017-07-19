@@ -22,7 +22,7 @@ export class CreatedAtComponent  {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private date_service: DateModifiedService, private  searchService: SearchService,
+  constructor(private date_service: DateModifiedService, private  searchService: SearchService ,
               private campaignService: CampaignSearchService, private  projectService: ProjectSearchService) {
 
     this.date_service.getcreatedAt()

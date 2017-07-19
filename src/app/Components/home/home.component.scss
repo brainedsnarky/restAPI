@@ -107,13 +107,13 @@
 
 .tabs-menu {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 10px;
 }
 
 .end-search{
-  float: right;
+ display: flex;
+  justify-content: flex-end;
 }
 
 .search-tab{

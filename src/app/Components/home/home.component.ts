@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private service: ServerService, private searchService: SearchService,
+  constructor(private service: ServerService, private searchService: SearchService ,
               private campaignService: CampaignSearchService, private projectService: ProjectSearchService) {
 
     this.service.getData()
