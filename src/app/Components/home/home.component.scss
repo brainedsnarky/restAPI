@@ -107,7 +107,7 @@
 
 .tabs-menu {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 10px;
 }
 
@@ -237,4 +237,10 @@
 
 .btn-ico i {
   margin-left: 5px;
+}
+
+.top-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
 }

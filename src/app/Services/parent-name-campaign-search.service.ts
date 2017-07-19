@@ -6,10 +6,10 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 @Injectable()
-export class CreatorNameSearchService {
+export class ParentNameCampaignSearchService {
 
   baseUrl: string = 'https://staging.letzchange.org/search?fq=(type:campaign%20AND%20';
-  queryUrl: string = 'creator_name:""';
+  queryUrl: string = 'parent_name:""';
   restOfBaseUrl: string = ')&rows=10';
 
   constructor(private http: Http) { }
