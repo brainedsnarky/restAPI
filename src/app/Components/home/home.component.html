@@ -1,18 +1,18 @@
 
 <div class="col-md-2-offset" style="margin-top: 10px">
-  <div style="width: 100%;" class="button-wrapper" >
-    <!--<form class="navbar-form navbar-right">-->
-    <!--<div class="form-group">-->
-    <!--<input type="text" class="form-control" placeholder="Search" >-->
-    <!--</div>-->
-    <!--</form>-->
-    <div class="top-search" data-reactid="21">
-      <span class="input" data-reactid="22">
-        <i class="fa fa-search" aria-hidden="true" data-reactid="23"></i>
-        <input type="text" name="Search for NGOs, Projects, Campaigns…" autocomplete="off" placeholder="Search for NGOs, Projects, Campaigns…"
-               value="" (keyup)="searchTerm$.next($event.target.value)"  [(ngModel)]="termm" >
-        <i class="" aria-hidden="true" ></i>
-      </span>
+  <div style="width: 100%;"  >
+    <ul class="tabs-menu">
+      <button class="search-tab tab-left btn border-white btn-xs" >Campaigns</button>
+      <button class="search-tab tab-right btn border-white btn-xs" >Live Projects</button>
+
+    </ul>
+    <div class="end-search">
+    <span class="input" >
+    <i class="fa fa-search" aria-hidden="true" ></i>
+    <input type="text" name="Search for NGOs, Projects, Campaigns…" autocomplete="off" placeholder="Search for NGOs, Projects, Campaigns…"
+    value="" (keyup)="searchTerm$.next($event.target.value)" >
+    <i class="" aria-hidden="true" ></i>
+    </span>
     </div>
   </div>
 
