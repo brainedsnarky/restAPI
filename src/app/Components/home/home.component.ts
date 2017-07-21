@@ -9,6 +9,7 @@ import {ProjectSearchService} from '../../Services/project-search.service';
 import {ProjectService} from '../../Services/project.service';
 import {CreatorNameSearchService} from '../../Services/creator-name-search.service';
 import {ParentNameCampaignSearchService} from '../../Services/parent-name-campaign-search.service';
+import {Http} from "@angular/http";
 
 
 @Component({
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
   results: any = {} ;
   searchTerm$ = new Subject<string>();
 
-  constructor(private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
+  constructor(private _http: Http ,  private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
               private campaignService: CampaignSearchService, private projectService: ProjectSearchService ,
               private creator_name: CreatorNameSearchService, private parent_namesearch: ParentNameCampaignSearchService ) {
 
@@ -62,6 +63,10 @@ export class HomeComponent implements OnInit {
 
   }
 
+  HIDE() {
+    this.hide = false;
+  }
+
    expand() {
     this.showDownloadOptions = true;
     this.hide = false;
@@ -80,6 +85,11 @@ export class HomeComponent implements OnInit {
   ShowMore() {
 
    console.log(' Working.. ');
+   // return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&start=9&row=18')
+   //   .map(response => response.json())
+   //   .subscribe(results => {
+   //     this.data = results;
+   //   });
 
   }
 

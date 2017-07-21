@@ -99,8 +99,11 @@
     border-bottom: 1px solid #ecf0f1;
     position: relative;
 
-    &:last-child {
+    list:last-child {
       border: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
     }
   }
 }

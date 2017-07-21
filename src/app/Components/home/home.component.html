@@ -45,14 +45,14 @@
 
   </div>
   <div style="display:flex; justify-content: center;">
-    <button class="btn btn-primary" (click)="ShowMore()" >ShowMore</button>
+    <button class="btn btn-success" (click)="ShowMore()" >Show More</button>
   </div>
   <div *ngIf="hide" >
     <button class="btn btn-primary" (click)="expand()" >Expand</button>
   </div>
   <div *ngIf="showDownloadOptions" >
     <div>
-      <label>Options</label>
+      <label><span class="fa-chevron-left" (click)="HIDE()" ></span>Options</label>
       <ul style="list-style-type: none" class="btn-wrap list">
         <li *ngFor="let i of array_of_keys" class="list-item">
           <input type="checkbox" (change)="updateChecked2(i,$event)" value="i" />{{i}}
