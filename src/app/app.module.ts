@@ -17,6 +17,7 @@ import { CampaignSearchService } from './Services/campaign-search.service';
 import {ProjectSearchService} from './Services/project-search.service';
 import {CreatorNameSearchService} from './Services/creator-name-search.service';
 import {ParentNameCampaignSearchService} from './Services/parent-name-campaign-search.service';
+import { AdvancesSearchService } from './Services/advances-search.service';
 
 // Components
 import { HomeComponent } from './Components/home/home.component';
@@ -49,9 +50,8 @@ const routes: Routes = [
     HttpModule,
     [RouterModule.forRoot(routes)]
   ],
-  providers: [SearchService, ServerService, ProjectService,
-    SupportersCountService, DateModifiedService, CreatorNameSearchService,
-    AmntRaisedService, CampaignSearchService, ProjectSearchService, ParentNameCampaignSearchService ],
+  providers: [SearchService, ServerService, ProjectService, SupportersCountService, DateModifiedService, CreatorNameSearchService,
+    AmntRaisedService, CampaignSearchService, ProjectSearchService, ParentNameCampaignSearchService, AdvancesSearchService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

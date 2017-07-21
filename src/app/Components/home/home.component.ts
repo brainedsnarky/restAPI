@@ -9,7 +9,6 @@ import {ProjectSearchService} from '../../Services/project-search.service';
 import {ProjectService} from '../../Services/project.service';
 import {CreatorNameSearchService} from '../../Services/creator-name-search.service';
 import {ParentNameCampaignSearchService} from '../../Services/parent-name-campaign-search.service';
-import {Http} from "@angular/http";
 
 
 @Component({
@@ -28,8 +27,10 @@ export class HomeComponent implements OnInit {
 
   results: any = {} ;
   searchTerm$ = new Subject<string>();
+  AsearchTerm$ = new Subject<string>();
 
-  constructor(private _http: Http ,  private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
+
+  constructor( private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
               private campaignService: CampaignSearchService, private projectService: ProjectSearchService ,
               private creator_name: CreatorNameSearchService, private parent_namesearch: ParentNameCampaignSearchService ) {
 
@@ -51,12 +52,12 @@ export class HomeComponent implements OnInit {
         this.data = results;
       });
 
-    this.creator_name.search(this.searchTerm$)
+    this.creator_name.search(this.AsearchTerm$)
       .subscribe(results => {
         this.data = results;
       });
 
-    this.parent_namesearch.search(this.searchTerm$)
+    this.parent_namesearch.search(this.AsearchTerm$)
       .subscribe(results => {
         this.data = results;
       });
