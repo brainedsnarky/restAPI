@@ -47,7 +47,7 @@
     </div>
     <div *ngIf="showDownloadOptions" >
       <div>
-        <label>Options</label>
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="HIDE()"></i> &nbsp;<label>Options</label>
         <ul style="list-style-type: none" class="btn-wrap list">
           <li *ngFor="let i of array_of_keys" class="list-item">
             <input type="checkbox" (change)="updateChecked2(i,$event)" value="i" />{{i}}

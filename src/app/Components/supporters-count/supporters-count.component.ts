@@ -59,7 +59,12 @@ export class SupportersCountComponent {
       });
   }
 
-  private expand() {
+  HIDE() {
+    this.showDownloadOptions = false;
+    this.hide = true;
+  }
+
+  expand() {
     this.showDownloadOptions = true;
     this.hide = false;
 

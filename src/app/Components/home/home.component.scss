@@ -250,4 +250,56 @@
   margin-left: 5px;
 }
 
+.input {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  vertical-align: top;
+  float: left;
+  font-size: 14px;
+}
+.input>input {
+  float: left;
+  clear: both;
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  border-bottom: 1px solid #9b9b9b;
+  border-radius: 0;
+  background: transparent;
+  color: #262626;
+  font-weight: normal;
+  -webkit-appearance: none; /* for box shadows to show on iOS */
+  display: block;
+  padding: 10px 0 10px 18px;
+  height: 100%;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.input>input:focus {
+  outline: none;
+  border-bottom: 1px solid #262626;
+}
+.input>i {
+  //line-height: 36px;
+  padding: 0;
+  position: absolute;
+  top: 35%;
+  height: 20%;
+}
+.input>i:first-child {
+  left: 0;
+}
+.input>i:last-child {
+  right: 0;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  text-align: right;
+}
+
+
 

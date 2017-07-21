@@ -58,6 +58,11 @@ export class CreatedAtComponent  {
       });
   }
 
+  HIDE() {
+    this.showDownloadOptions = false;
+    this.hide = true;
+  }
+
   private expand() {
     this.showDownloadOptions = true;
     this.hide = false;
