@@ -24,6 +24,7 @@ export class SupportersCountComponent {
 
   results: any = {} ;
   searchTerm$ = new Subject<string>();
+  AsearchTerm$ = new Subject<string>();
 
 
   constructor( private _http: Http,  private supporters_Service: SupportersCountService, private  searchService: SearchService,
@@ -48,12 +49,12 @@ export class SupportersCountComponent {
         this.supporters_sort = results;
       });
 
-    this.creator_name.search(this.searchTerm$)
+    this.creator_name.search(this.AsearchTerm$)
       .subscribe(results => {
         this.supporters_sort = results;
       });
 
-    this.parent_namesearch.search(this.searchTerm$)
+    this.parent_namesearch.search(this.AsearchTerm$)
       .subscribe(results => {
         this.supporters_sort = results;
       });

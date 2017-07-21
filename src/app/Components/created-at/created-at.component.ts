@@ -24,6 +24,7 @@ export class CreatedAtComponent  {
 
   results: any = {} ;
   searchTerm$ = new Subject<string>();
+  AsearchTerm$ = new Subject<string>();
 
   constructor(private _http: Http, private date_service: DateModifiedService, private  searchService: SearchService ,
               private campaignService: CampaignSearchService, private  projectService: ProjectSearchService,
@@ -47,12 +48,12 @@ export class CreatedAtComponent  {
         this.created_at_array = results;
       });
 
-    this.creator_name.search(this.searchTerm$)
+    this.creator_name.search(this.AsearchTerm$)
       .subscribe(results => {
         this.created_at_array = results;
       });
 
-    this.parent_namesearch.search(this.searchTerm$)
+    this.parent_namesearch.search(this.AsearchTerm$)
       .subscribe(results => {
         this.created_at_array = results;
       });
