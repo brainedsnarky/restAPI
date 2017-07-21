@@ -64,7 +64,8 @@ export class HomeComponent implements OnInit {
   }
 
   HIDE() {
-    this.hide = false;
+    this.showDownloadOptions = false;
+    this.hide = true;
   }
 
    expand() {
