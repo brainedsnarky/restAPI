@@ -11,7 +11,7 @@ export class SearchService {
 
   baseUrl: string = 'https://staging.letzchange.org/';
   queryUrl: string = 'search?q=';
-  restofBaseUrl: string = '~&fq=(type:campaign)&rows=10';
+  restofBaseUrl: string = '~&fq=(type:campaign)';
 
   constructor(private http: Http) { }
 
@@ -27,7 +27,7 @@ export class SearchService {
         .map(response => response.json());
     }
     return this.http
-      .get('https://staging.letzchange.org/search?fq=(type:campaign)&rows=20')
+      .get('https://staging.letzchange.org/search?fq=(type:campaign)')
       .map(response => response.json());
   }
 

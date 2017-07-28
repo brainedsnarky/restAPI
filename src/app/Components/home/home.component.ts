@@ -9,7 +9,6 @@ import {ProjectSearchService} from '../../Services/project-search.service';
 import {ProjectService} from '../../Services/project.service';
 import {CreatorNameSearchService} from '../../Services/creator-name-search.service';
 import {ParentNameCampaignSearchService} from '../../Services/parent-name-campaign-search.service';
-import {Http} from "@angular/http";
 
 
 @Component({
@@ -18,8 +17,9 @@ import {Http} from "@angular/http";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   title = 'LetzChange Foundations Campaigns';
-  data: any = {};
+  dataa: any = {};
   array_of_keys: any = [];
   array_of_required_keys: any = [];
 
@@ -30,38 +30,43 @@ export class HomeComponent implements OnInit {
   searchTerm$ = new Subject<string>();
   AsearchTerm$ = new Subject<string>();
 
+  counter: number;
+  content: any[] = new Array();
 
-  constructor(private _http: Http , private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
+  constructor( private service: ServerService , private getprojectService: ProjectService , private searchService: SearchService ,
               private campaignService: CampaignSearchService, private projectService: ProjectSearchService ,
               private creator_name: CreatorNameSearchService, private parent_namesearch: ParentNameCampaignSearchService ) {
 
     this.service.getData()
-      .subscribe(res => this.data = res);
+      .subscribe(res => this.dataa = res);
 
     this.searchService.search(this.searchTerm$)
       .subscribe(results => {
-        this.data = results;
+        this.dataa = results;
       });
 
     this.campaignService.search(this.searchTerm$)
       .subscribe(results => {
-        this.data = results;
+        this.dataa = results;
       });
 
     this.projectService.search(this.searchTerm$)
       .subscribe(results => {
-        this.data = results;
+        this.dataa = results;
       });
 
     this.creator_name.search(this.AsearchTerm$)
       .subscribe(results => {
-        this.data = results;
+        this.dataa = results;
       });
 
     this.parent_namesearch.search(this.AsearchTerm$)
       .subscribe(results => {
-        this.data = results;
+        this.dataa = results;
       });
+
+    this.counter = 0;
+    this.ShowMore();
 
   }
 
@@ -70,11 +75,11 @@ export class HomeComponent implements OnInit {
     this.hide = true;
   }
 
-   expand() {
+  expand() {
     this.showDownloadOptions = true;
     this.hide = false;
 
-    this.data.response.docs.forEach((d) => {
+    this.dataa.response.docs.forEach((d) => {
       Object.keys(d).forEach((key) => {
         if (this.array_of_keys.indexOf(key) === -1) {
           this.array_of_keys.push(key);
@@ -88,13 +93,15 @@ export class HomeComponent implements OnInit {
   ShowMore() {
 
    console.log(' Working.. ');
-  //  this.data.push( this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&start=9&row=18')
-  //     .map(response => response.json())
-  //     .subscribe(results => {
-  //       this.data = results;
-  //     })
-  // );
 
+    for (let i = this.counter + 1; i < this.dataa.length; i++) {
+      this.content.push(this.dataa[i]);
+      if ( i % 10 === 0) {
+        break;
+      }
+    }
+    this.counter += 10;
+     console.log(this.content);
   }
 
   updateChecked2(value, event) {
@@ -135,17 +142,17 @@ export class HomeComponent implements OnInit {
 
   showCampaigns() {
     this.service.getData()
-      .subscribe(res => this.data = res);
+      .subscribe(res => this.dataa = res);
   }
 
   showProjects() {
     this.getprojectService.getData()
-      .subscribe(res => this.data = res);
+      .subscribe(res => this.dataa = res);
   }
 
   downloadData() {
 
-    let results = this.data.response.docs.map((d) => {
+    let results = this.dataa.response.docs.map((d) => {
       const obj = {};
       this.array_of_required_keys.forEach((key) => {
         if (d[key]) {

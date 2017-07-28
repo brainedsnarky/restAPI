@@ -7,7 +7,7 @@ export class ProjectService {
 
   constructor(private http: Http) { }
 
-  getData() {return this.http.get('https://staging.letzchange.org/search?fq=(type:project)&rows=20')
+  getData() {return this.http.get('https://staging.letzchange.org/search?fq=(type:project)')
     .map(response => response.json());
   }
 
