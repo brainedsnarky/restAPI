@@ -1,9 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Subject} from 'rxjs/Subject';
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
