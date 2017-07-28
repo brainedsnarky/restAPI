@@ -20,8 +20,6 @@ export class HomeComponent implements OnInit {
   hide = true;
 
   results: any = {} ;
-  searchTerm$ = new Subject<string>();
-  AsearchTerm$ = new Subject<string>();
 
   counter: number;
   content: any[] = new Array();
