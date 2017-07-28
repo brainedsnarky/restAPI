@@ -1,3 +1,24 @@
-<p>
-  campaign works!
-</p>
+<div class="outer-container">
+  <div class="card" *ngFor='let d of dataa.response.docs'>
+    <div class="img-wrapper">
+      <img alt="image" class="img-circle m-t-xs img-responsive" src="{{d.creator_image}}">
+      <div class="m-t-xs font-bold" style="white-space: pre-wrap" >{{d.name}}</div>
+    </div>
+    <div class="content-wrapper">
+      <p class="text-muted"><i class="fa fa-clock-o"></i> {{d.created_at | date: 'MMMM d, yyyy'}}</p>
+      <p class="text-muted"><i class="fa fa-heart"></i> {{d.supporter_count}}</p>
+      <p class="text-muted">₹ {{d.raised_amount_in_inr}}</p>
+      <p class=" text-muted fa fa-map-marker" aria-hidden="true" > {{d.location}}</p>
+      <div class="cause-wrapper">
+        <ul  style="list-style-type: none; width: 100%;" class="btn btn-xs" *ngFor="let cause of d.causes">
+          <li style="white-space:pre-wrap">{{cause}}</li>
+        </ul>
+      </div>
+      <div class="tags-wrapper">
+        <ul  style="list-style-type: none" class="btn btn-xs"  *ngFor="let tag of d.tags">
+          <li style="white-space:pre-wrap">{{tag}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

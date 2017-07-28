@@ -2,11 +2,6 @@ import {Component, OnInit} from '@angular/core';
 
 import {Subject} from 'rxjs/Subject';
 
-import {ServerService} from '../../Services/server.service';
-import {SearchService} from '../../Services/search.service';
-import {CampaignSearchService} from '../../Services/campaign-search.service';
-import {CreatorNameSearchService} from '../../Services/creator-name-search.service';
-import {ParentNameCampaignSearchService} from '../../Services/parent-name-campaign-search.service';
 
 
 @Component({
@@ -25,37 +20,13 @@ export class HomeComponent implements OnInit {
   hide = true;
 
   results: any = {} ;
-
+  searchTerm$ = new Subject<string>();
+  AsearchTerm$ = new Subject<string>();
 
   counter: number;
   content: any[] = new Array();
 
-  constructor( private service: ServerService, private searchService: SearchService ,
-              private campaignService: CampaignSearchService, private creator_name: CreatorNameSearchService,
-               private parent_namesearch: ParentNameCampaignSearchService ) {
-
-    this.service.getData()
-      .subscribe(res => this.dataa = res);
-
-    // this.searchService.search(this.searchTerm$)
-    //   .subscribe(results => {
-    //     this.dataa = results;
-    //   });
-    //
-    // this.campaignService.search(this.searchTerm$)
-    //   .subscribe(results => {
-    //     this.dataa = results;
-    //   });
-    //
-    // this.creator_name.search(this.AsearchTerm$)
-    //   .subscribe(results => {
-    //     this.dataa = results;
-    //   });
-    //
-    // this.parent_namesearch.search(this.AsearchTerm$)
-    //   .subscribe(results => {
-    //     this.dataa = results;
-    //   });
+  constructor( ) {
 
     this.counter = 0;
     this.ShowMore();
@@ -134,8 +105,7 @@ export class HomeComponent implements OnInit {
   }
 
   showCampaigns() {
-    this.service.getData()
-      .subscribe(res => this.dataa = res);
+
   }
 
 
