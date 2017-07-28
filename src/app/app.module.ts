@@ -34,6 +34,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent,
   children: [
     {
+      path: '',
+      redirectTo: '/home/CampaignComponent',
+      pathMatch: 'full'
+    },
+    {
       path: 'campaigns',
       component: CampaignComponent
     },
