@@ -8,7 +8,7 @@ export class AmntRaisedService {
   constructor(private _http: Http) { }
 
   getAmntRaised() {
-    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=raised_amount_in_inr%20asc')
+    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=raised_amount_in_inr%20asc&start=10')
       .map(response => response.json());
   }
 

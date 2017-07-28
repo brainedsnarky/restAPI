@@ -10,7 +10,7 @@ export class ParentNameCampaignSearchService {
 
   baseUrl: string = 'https://staging.letzchange.org/search?fq=(type:campaign%20AND%20';
   queryUrl: string = 'parent_name:""';
-  restOfBaseUrl: string = ')';
+  restOfBaseUrl: string = ')&start=10';
 
   constructor(private http: Http) { }
 
@@ -27,7 +27,7 @@ export class ParentNameCampaignSearchService {
         .map(response => response.json());
     }
     return this.http
-      .get('https://staging.letzchange.org/search?fq=(type:campaign)')
+      .get('https://staging.letzchange.org/search?fq=(type:campaign)&start=10')
       .map(response => response.json());
   }
 

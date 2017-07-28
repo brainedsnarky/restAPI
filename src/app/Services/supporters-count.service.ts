@@ -8,7 +8,7 @@ export class SupportersCountService {
   constructor(private _http: Http) { }
 
   getSupportersCount() {
-    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=supporter_count%20asc')
+    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=supporter_count%20asc&start=10')
       .map(response => response.json());
   }
 

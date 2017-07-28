@@ -25,11 +25,23 @@ import { HeaderComponent } from './Components/header/header.component';
 import { SupportersCountComponent } from './Components/supporters-count/supporters-count.component';
 import { CreatedAtComponent } from './Components/created-at/created-at.component';
 import { AmountRaisedComponent } from './Components/amount-raised/amount-raised.component';
+import { ProjectComponent } from './Components/project/project.component';
+import { CampaignComponent } from './Components/campaign/campaign.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent,
+  children: [
+    {
+      path: 'campaigns',
+      component: CampaignComponent
+    },
+    {
+      path: 'projects',
+      component: ProjectComponent
+    }
+  ]},
   { path: 'supporters_count', component: SupportersCountComponent },
   { path: 'created_at', component: CreatedAtComponent },
   { path: 'amount_raised', component: AmountRaisedComponent }
@@ -42,7 +54,9 @@ const routes: Routes = [
     HeaderComponent,
     SupportersCountComponent,
     CreatedAtComponent,
-    AmountRaisedComponent
+    AmountRaisedComponent,
+    ProjectComponent,
+    CampaignComponent
   ],
   imports: [
     BrowserModule,

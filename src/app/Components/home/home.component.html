@@ -3,8 +3,8 @@
   <div class="top-section" >
     <div >
     <ul class="tabs-menu">
-      <button class="search-tab tab-left btn border-white btn-xs" [routerLinkActive]="['active']" (click)="showCampaigns()" >Campaigns</button>
-      <button class="search-tab tab-right btn border-white btn-xs" [routerLinkActive]="['active']" (click)="showProjects()" >Live Projects</button>
+      <button class="search-tab tab-left btn border-white btn-xs" [routerLinkActive]="['active']" routerLink='/home/campaigns' >Campaigns</button>
+      <button class="search-tab tab-right btn border-white btn-xs" [routerLinkActive]="['active']" routerLink='/home/projects' >Live Projects</button>
     </ul>
     </div>
     <div class="end-search">
@@ -25,32 +25,8 @@
   </div>
 
   <!-- This will render by default -->
-  <div class="outer-container">
-    <div class="card" *ngFor='let d of dataa.response.docs'>
-      <div class="img-wrapper">
-        <img alt="image" class="img-circle m-t-xs img-responsive" src="{{d.creator_image}}">
-        <div class="m-t-xs font-bold" style="white-space: pre-wrap" >{{d.name}}</div>
-      </div>
-      <div class="content-wrapper">
-        <p class="text-muted"><i class="fa fa-clock-o"></i> {{d.created_at | date: 'MMMM d, yyyy'}}</p>
-        <p class="text-muted"><i class="fa fa-heart"></i> {{d.supporter_count}}</p>
-        <p class="text-muted">₹ {{d.raised_amount_in_inr}}</p>
-        <p class=" text-muted fa fa-map-marker" aria-hidden="true" > {{d.location}}</p>
-        <div class="cause-wrapper">
-          <ul  style="list-style-type: none; width: 100%;" class="btn btn-xs" *ngFor="let cause of d.causes">
-            <li style="white-space:pre-wrap">{{cause}}</li>
-          </ul>
-        </div>
-        <div class="tags-wrapper">
-          <ul  style="list-style-type: none" class="btn btn-xs"  *ngFor="let tag of d.tags">
-            <li style="white-space:pre-wrap">{{tag}}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<router-outlet></router-outlet>
 
-
-  </div>
   <div style="display:flex; justify-content: center;">
     <button class="btn btn-success" (click)="ShowMore()" [disabled]="counter >= dataa.length" >Show More</button>
   </div>

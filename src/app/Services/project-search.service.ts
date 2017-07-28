@@ -10,7 +10,7 @@ export class ProjectSearchService {
 
   baseUrl: string = 'https://staging.letzchange.org/';
   queryUrl: string = 'search?q=';
-  restOfBaseUrl: string = '~&fq=(type:project)';
+  restOfBaseUrl: string = '~&fq=(type:project)&start=10';
 
   constructor(private http: Http) { }
 
@@ -27,7 +27,7 @@ export class ProjectSearchService {
         .map(response => response.json());
     }
     return this.http
-      .get('https://staging.letzchange.org/search?fq=(type:project)')
+      .get('https://staging.letzchange.org/search?fq=(type:project)&start=10')
       .map(response => response.json());
   }
 

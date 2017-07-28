@@ -8,7 +8,7 @@ export class DateModifiedService {
   constructor(private _http: Http) { }
 
   getcreatedAt() {
-    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=created_at%20desc')
+    return this._http.get('https://staging.letzchange.org/search?fq=(type:campaign)&sort=created_at%20desc&start=10')
       .map(response => response.json());
   }
 
